@@ -1,19 +1,17 @@
-resource "google_compute_network" "default" {
-  name = "vuln-network"
+resource "google_sql_database" "database" {
+  name     = "my-database"
+  instance = google_sql_database_instance.instance.name
 }
 
-resource "google_compute_firewall" "default" {
-  name    = "vuln-firewall"
-  network = google_compute_network.default.name
-
-  allow {
-    protocol = "icmp"
+# See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+resource "google_sql_database_instance" "instance" {
+  name             = "my-database-instance"
+  region           = "us-central1"
+  database_version = "MYSQL_8_0"
+  settings {
+    tier = "db-f1-micro"
   }
 
-  allow {
-    protocol = "tcp"
-    ports    = ["80", "8080", "1000-2000", "22"]
-  }
+  require_ssl = false
 
-  source_tags = ["web"]
 }

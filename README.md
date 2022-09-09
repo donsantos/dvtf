@@ -1,3 +1,3 @@
 # Damn Vulnerable Terraform
-Deploys a Google Cloud Network with a Firewall that allows TCP ports 80, 8080, 1000-2000, and 22.
+Deploys a CloudSQL instance that doesn't have SSL enforced.
 We dont wan't that do we?
