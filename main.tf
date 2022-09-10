@@ -12,6 +12,6 @@ resource "google_sql_database_instance" "instance" {
     tier = "db-f1-micro"
   }
 
-  require_ssl = false
+  #require_ssl = false
 
 }
