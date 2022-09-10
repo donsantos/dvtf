@@ -7,8 +7,6 @@ jobs:
       matrix:
         files:
           - main.tf
-          - provider.tf
-          - variables.tf
     steps:
       - name: Run Snyk to check Kubernetes manifest file for issues
         uses: snyk/actions/iac@master
